@@ -1,0 +1,14 @@
+.label-input-pair {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.name-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
