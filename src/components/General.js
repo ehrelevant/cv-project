@@ -6,65 +6,94 @@ class General extends Component {
   }
 
   render() {
+    const { onGeneralChange, generalInfo } = this.props;
+
     return (
-      <div className="cv-section">
+      <section className="cv-section">
         <div className="name-inputs">
-          <div class="label-input-pair">
-            <label>First Name</label>
+          <div className="label-input-pair">
+            <label htmlFor="firstName">First Name</label>
             <input
               type="text"
+              name="firstName"
+              value={generalInfo.firstName}
+              onChange={onGeneralChange}
             />
           </div>
-          <div class="label-input-pair">
-            <label>Last Name</label>
+          <div className="label-input-pair">
+            <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
+              name="lastName"
+              value={generalInfo.lastName}
+              onChange={onGeneralChange}
             />
           </div>
         </div>
-        <div class="label-input-pair">
-          <label>E-mail address</label>
+        <div className="label-input-pair">
+          <label htmlFor="email">E-mail address</label>
           <input
             type="text"
+            name="email"
+            value={generalInfo.email}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Phone number</label>
+        <div className="label-input-pair">
+          <label htmlFor="phoneNumber">Phone number</label>
           <input
             type="text"
+            name="phoneNumber"
+            value={generalInfo.phoneNumber}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Website</label>
+        <div className="label-input-pair">
+          <label htmlFor="website">Website</label>
           <input
             type="text"
+            name="website"
+            value={generalInfo.website}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Address line 1</label>
+        <div className="label-input-pair">
+          <label htmlFor="address1">Address line 1</label>
           <input
             type="text"
+            name="address1"
+            value={generalInfo.address1}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Address line 2</label>
+        <div className="label-input-pair">
+          <label htmlFor="address2">Address line 2</label>
           <input
             type="text"
+            name="address2"
+            value={generalInfo.address2}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Address line 3</label>
+        <div className="label-input-pair">
+          <label htmlFor="address3">Address line 3</label>
           <input
             type="text"
+            name="address3"
+            value={generalInfo.address3}
+            onChange={onGeneralChange}
           />
         </div>
-        <div class="label-input-pair">
-          <label>Photo</label>
+        <div className="label-input-pair">
+          <label htmlFor="photoUrl">Photo</label>
           <input
             type="file"
+            name="photoUrl"
+            value={generalInfo.photoUrl}
+            onChange={onGeneralChange}
           />
         </div>
-      </div>
+      </section>
     );
   }
 }
