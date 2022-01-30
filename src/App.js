@@ -5,6 +5,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
+import Practical from './components/Practical';
 
 
 class App extends Component {
@@ -24,19 +25,7 @@ class App extends Component {
         photoUrl: '',
       },
       educationalExp: [],
-      /*
-      practicalExp: [
-        {
-          id: uniqid(),
-          index: 0,
-          company: '',
-          address: '',
-          position: '',
-          startDate: '',
-          endDate: '',
-        }
-      ]
-      */
+      practicalExp: [],
     };
 
     this.formSubmit = this.formSubmit.bind(this);
@@ -74,7 +63,7 @@ class App extends Component {
       educationalExp: this.state.educationalExp.map(entry => {
         if(entry.id === entryId) {
           return {
-            id: entry.id,
+            id: entryId,
             university: form['university'+entryId].value,
             address: form['address'+entryId].value,
             degree: form['degree'+entryId].value,
@@ -89,8 +78,26 @@ class App extends Component {
     });
   }
 
-  onPracticalChange(evt) {
+  onPracticalChange(evt, entryId) {
     evt.preventDefault();
+    const target = evt.target;
+    const form = target.form;
+    this.setState({
+      practicalExp: this.state.educationalExp.map(entry => {
+        if(entry.id === entryId) {
+          return {
+            id: entryId,
+            company: form['university'+entryId].value,
+            address: form['address'+entryId].value,
+            position: form['position'+entryId].value,
+            startDate: form['startDate'+entryId].value,
+            endDate: form['endDate'+entryId].value,
+          }
+        } else {
+          return entry;
+        }
+      })
+    });
   }
 
   addEducationEntry(evt) {
@@ -110,11 +117,21 @@ class App extends Component {
 
   addPracticalEntry(evt) {
     evt.preventDefault();
+    this.setState({
+      practicalExp: this.state.practicalExp.concat({
+        id: uniqid(),
+        company: '',
+        address: '',
+        position: '',
+        startDate: '',
+        endDate: '',
+      })
+    });
   }
 
   formSubmit(evt) {
     evt.preventDefault();
-    console.log(evt.target);
+    
   }
 
   render() {
@@ -122,14 +139,37 @@ class App extends Component {
       <main>
         <form onSubmit={this.formSubmit}>
           <General onGeneralChange={this.onGeneralChange} generalInfo={this.state.generalInfo} />
-          <hr></hr>
-          {this.state.educationalExp.map(entry => {
+
+          <hr />
+          <p>Educational Experience</p>
+
+          {this.state.educationalExp.map((entry, index) => {
             return (
-              <Education onEducationChange={this.onEducationChange} educationalEntry={entry} key={entry.id} />
+              <div key={entry.id}>
+                ({index+1})
+                <Education onEducationChange={this.onEducationChange} educationalEntry={entry} />
+                <br />
+              </div>
             )
           })}
-          <button onClick={this.addEducationEntry}>Add Entry</button>
-          <hr></hr>
+          <button onClick={this.addEducationEntry}>+ Add Entry</button>
+
+          <hr />
+          <p>Practical Experience</p>
+
+          {this.state.practicalExp.map((entry, index) => {
+            return (
+              <div key={entry.id}>
+                ({index+1})
+                <Practical onPracticalChange={this.onPracticalChange} practicalEntry={entry} />
+                <br />
+              </div>
+            )
+          })}
+          <button onClick={this.addPracticalEntry}>+ Add Entry</button>
+
+          <hr />
+
           <button type="submit">Generate CV</button>
         </form>
       </main>
