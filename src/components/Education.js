@@ -17,7 +17,7 @@ class Education extends Component {
             type="text"
             name={"university"+entryId}
             value={educationalEntry.university}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
         <div className="label-input-pair">
@@ -26,7 +26,7 @@ class Education extends Component {
             type="text"
             name={"address"+entryId}
             value={educationalEntry.address}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
         <div className="label-input-pair">
@@ -35,7 +35,7 @@ class Education extends Component {
             type="text"
             name={"degree"+entryId}
             value={educationalEntry.degree}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
         <div className="label-input-pair">
@@ -44,7 +44,7 @@ class Education extends Component {
             type="text"
             name={"gpa"+entryId}
             value={educationalEntry.gpa}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
         <div className="label-input-pair">
@@ -54,7 +54,7 @@ class Education extends Component {
             placeholder="Month & Year"
             name={"startDate"+entryId}
             value={educationalEntry.startDate}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
         <div className="label-input-pair">
@@ -64,7 +64,7 @@ class Education extends Component {
             placeholder="Month & Year (or Present)"
             name={"endDate"+entryId}
             value={educationalEntry.endDate}
-            onChange={evt => onEducationChange(evt, educationalEntry.id)}
+            onChange={evt => onEducationChange(evt, entryId)}
           />
         </div>
       </section>
