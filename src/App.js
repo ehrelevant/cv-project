@@ -1,11 +1,11 @@
 import General from './components/General';
 import Education from './components/Education';
+import Practical from './components/Practical';
 
-import './App.css';
+import './styles/App.css';
 
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
-import Practical from './components/Practical';
 
 
 class App extends Component {
@@ -131,7 +131,7 @@ class App extends Component {
 
   formSubmit(evt) {
     evt.preventDefault();
-    
+    console.log(evt.target);
   }
 
   render() {
