@@ -20,19 +20,24 @@ p {
 .cv-paper {
     width: 8.5in;
     height: 11in;
-    border: 1px solid black;
+    border: 1px solid #000000;
     padding: 0.5in;
 }
 
 
-.cv-header, .cv-header-title, .cv-profile, .educational-entry {
+.cv-header-title, .cv-profile, .cv-education {
     margin-bottom: 30px;
+}
+
+.cv-general-title, .cv-body-title {
+    font-weight: bold;
 }
 
 
 .cv-header {
     display: flex;
     flex-direction: row;
+    margin-bottom: 40px;
 }
 
 
@@ -51,6 +56,12 @@ p {
     font-size: 20px;
 }
 
+
+.cv-body-title {
+    border-bottom: 2px solid #000000;
+    margin-bottom: 10px;
+}
+
 .cv-general-info {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -64,8 +75,15 @@ p {
     border-radius: 50%;
     background-color: #f0f0f0;
     flex-shrink: 0;
+
+    background-image: url("../assets/blank-profile.png");
+    background-size: contain;
 }
 
+.educational-entries, .practical-entries {
+    display: grid;
+    row-gap: 10px;
+}
 
 .practical-entry, .educational-entry {
     display: grid;
