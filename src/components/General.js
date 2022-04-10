@@ -31,6 +31,15 @@ class General extends Component {
           </div>
         </div>
         <div className="label-input-pair">
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={generalInfo.title}
+            onChange={onGeneralChange}
+          />
+        </div>
+        <div className="label-input-pair">
           <label htmlFor="email">E-mail address</label>
           <input
             type="text"

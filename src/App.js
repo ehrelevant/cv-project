@@ -15,6 +15,7 @@ class App extends Component {
       generalInfo: {
         firstName: '',
         lastName: '',
+        title: '',
         email: '',
         phoneNumber: '',
         website: '',
@@ -42,6 +43,7 @@ class App extends Component {
       generalInfo: {
         firstName: form['firstName'].value,
         lastName: form['lastName'].value,
+        title: form['title'].value,
         email: form['email'].value,
         phoneNumber: form['phoneNumber'].value,
         website: form['website'].value,

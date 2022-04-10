@@ -8,30 +8,33 @@ class Display extends Component {
   }
 
   render() {
+    const { state } = this.props;
+    console.log(state);
+
     return (
       <div className="display">
         <div className="cv-paper">
           <header className="cv-header">
             <div className='cv-header-info'>
-              <h1 className='cv-header-name'>Jean Valjean</h1>
-              <h2 className='cv-header-title'>Cool Prison Man</h2>
+              <h1 className='cv-header-name'>{state.generalInfo.firstName} {state.generalInfo.lastName}</h1>
+              <h2 className='cv-header-title'>{state.generalInfo.title}</h2>
               <div className='cv-general-info'>
                 <div className='cv-general-entry cv-address'>
                   <h3 className="cv-general-title">Address: </h3>
-                  <p>16 John St.</p>
-                  <p>Sad City, Philippines</p>
+                  <p>{state.generalInfo.address1}</p>
+                  <p>{state.generalInfo.address2}, {state.generalInfo.address3}</p>
                 </div>
                 <div className='cv-general-entry cv-phone'>
                   <h3 className="cv-general-title">Phone: </h3>
-                  <p>1234567890</p>
+                  <p>{state.generalInfo.phoneNumber}</p>
                 </div>
                 <div className='cv-general-entry cv-email'>
                   <h3 className="cv-general-title">Email: </h3>
-                  <p>kindaexists@gmail.com</p>
+                  <p>{state.generalInfo.email}</p>
                 </div>
                 <div className='cv-general-entry cv-website'>
                   <h3 className="cv-general-title">Website: </h3>
-                  <p><a href='https://github.com/KindaExists' target='_blank' rel='noreferrer'>https://github.com/KindaExists</a></p>
+                  <p><a href={state.generalInfo.website} target='_blank' rel='noreferrer'>{state.generalInfo.website}</a></p>
                 </div>
               </div>
             </div>
@@ -42,7 +45,6 @@ class Display extends Component {
             <div className="cv-profile">
               <h3 className="cv-body-title">Profile</h3>
               <p>
-                I am Jean Valjean.
                 Do consequat ea qui sint velit ullamco officia incididunt tempor et velit. Nostrud ut irure occaecat duis pariatur ullamco aute elit aliqua enim amet qui reprehenderit. Consectetur mollit elit et excepteur esse incididunt ipsum.
                 Enim amet nostrud et consequat anim. Dolore nulla laborum qui esse. Consectetur exercitation excepteur cupidatat eiusmod labore cillum esse laboris ipsum enim ex. Eu incididunt aliquip deserunt anim est deserunt tempor. Incididunt minim do qui labore. Laborum in sint ex voluptate minim enim minim enim labore consectetur labore. Adipisicing velit adipisicing sint culpa eu esse minim nisi et minim laboris.
               </p>
@@ -51,41 +53,21 @@ class Display extends Component {
               <h3 className="cv-body-title">Education</h3>
               <div className="educational-entries">
 
-                <div className="educational-entry">
-                  <div className="entry-left">
-                    <p className="generic-entry-date">June 2016 - Mar 2018</p>
-                  </div>
-                  <div className="entry-right">
-                    <p className="educational-entry-degree">Bachelor in Computer Things</p>
-                    <p className="educational-entry-university">Universe University</p>
-                    <p className="educational-entry-address">CT City, Philippines</p>
-                    <p className="educational-entry-gpa">GPA: 4.00</p>
-                  </div>
-                </div>
-
-                <div className="educational-entry">
-                  <div className="entry-left">
-                    <p className="generic-entry-date">June 2016 - Mar 2018</p>
-                  </div>
-                  <div className="entry-right">
-                    <p className="educational-entry-degree">Bachelor in Computer Things</p>
-                    <p className="educational-entry-university">Universe University</p>
-                    <p className="educational-entry-address">CT City, Philippines</p>
-                    <p className="educational-entry-gpa">GPA: 4.00</p>
-                  </div>
-                </div>
-
-                <div className="educational-entry">
-                  <div className="entry-left">
-                    <p className="generic-entry-date">June 2016 - Mar 2018</p>
-                  </div>
-                  <div className="entry-right">
-                    <p className="educational-entry-degree">Bachelor in Computer Things</p>
-                    <p className="educational-entry-university">Universe University</p>
-                    <p className="educational-entry-address">CT City, Philippines</p>
-                    <p className="educational-entry-gpa">GPA: 4.00</p>
-                  </div>
-                </div>
+                {state.educationalExp.map((entry) => {
+                  return (
+                    <div key={entry.id} className="educational-entry">
+                      <div className="entry-left">
+                        <p className="generic-entry-date">{entry.startDate} - {entry.endDate}</p>
+                      </div>
+                      <div className="entry-right">
+                        <p className="educational-entry-degree">{entry.degree}</p>
+                        <p className="educational-entry-university">{entry.university}</p>
+                        <p className="educational-entry-address">{entry.address}</p>
+                        <p className="educational-entry-gpa">GPA: {entry.gpa}</p>
+                      </div>
+                    </div>
+                  );
+                })}
 
               </div>
             </div>
@@ -93,16 +75,20 @@ class Display extends Component {
               <h3 className="cv-body-title">Practical Experience</h3>
               <div className="practical-entries">
 
-                <div className="practical-entry">
-                  <div className="entry-left">
-                    <p className="generic-entry-date">Nov 2020 - Feb 2021</p>
-                  </div>
-                  <div className="entry-right">
-                    <p className="practical-entry-position">Senior Procrastinator</p>
-                    <p className="practical-entry-company">Gugol Company</p>
-                    <p className="practical-entry-address">CT City, Philippines</p>
-                  </div>
-                </div>
+                {state.practicalExp.map((entry) => {
+                  return (
+                    <div className="practical-entry">
+                      <div className="entry-left">
+                        <p className="generic-entry-date">{entry.startDate} - {entry.endDate}</p>
+                      </div>
+                      <div className="entry-right">
+                        <p className="practical-entry-position">{entry.position}</p>
+                        <p className="practical-entry-company">{entry.company}</p>
+                        <p className="practical-entry-address">{entry.address}</p>
+                      </div>
+                    </div>
+                  );
+                })}
 
               </div>
             </div>
