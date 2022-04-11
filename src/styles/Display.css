@@ -75,9 +75,6 @@ p {
     border-radius: 50%;
     background-color: #f0f0f0;
     flex-shrink: 0;
-
-    background-image: url("../assets/blank-profile.png");
-    background-size: contain;
 }
 
 .cv-image-content {

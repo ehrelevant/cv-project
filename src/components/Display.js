@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import '../styles/Display.css';
+import blankProfile from '../assets/blank-profile.png'
 
 class Display extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class Display extends Component {
               </div>
             </div>
             <div className='cv-image'>
-              <img className='cv-image-content' src={general.photo ? URL.createObjectURL(general.photo) : ""} alt="" />
+              <img className='cv-image-content' src={general.photo ? URL.createObjectURL(general.photo) : blankProfile} alt="" />
             </div>
           </header>
           <main className="cv-body">
