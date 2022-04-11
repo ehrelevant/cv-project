@@ -23,6 +23,7 @@ class App extends Component {
         address2: '',
         address3: '',
         photoUrl: '',
+        profile: '',
       },
       educationalExp: [],
       practicalExp: [],
@@ -51,6 +52,7 @@ class App extends Component {
         address2: form['address2'].value,
         address3: form['address3'].value,
         photoUrl: '',
+        profile: form['profile'].value,
       },
     });
     console.log(this.state)

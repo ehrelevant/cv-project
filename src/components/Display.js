@@ -9,32 +9,32 @@ class Display extends Component {
 
   render() {
     const { state } = this.props;
-    console.log(state);
+    const general = state.generalInfo;
 
     return (
       <div className="display">
         <div className="cv-paper">
           <header className="cv-header">
             <div className='cv-header-info'>
-              <h1 className='cv-header-name'>{state.generalInfo.firstName} {state.generalInfo.lastName}</h1>
-              <h2 className='cv-header-title'>{state.generalInfo.title}</h2>
+              <h1 className='cv-header-name'>{general.firstName} {general.lastName}</h1>
+              <h2 className='cv-header-title'>{general.title}</h2>
               <div className='cv-general-info'>
                 <div className='cv-general-entry cv-address'>
                   <h3 className="cv-general-title">Address: </h3>
-                  <p>{state.generalInfo.address1}</p>
-                  <p>{state.generalInfo.address2}, {state.generalInfo.address3}</p>
+                  <p>{general.address1}</p>
+                  <p>{general.address2}, {general.address3}</p>
                 </div>
                 <div className='cv-general-entry cv-phone'>
                   <h3 className="cv-general-title">Phone: </h3>
-                  <p>{state.generalInfo.phoneNumber}</p>
+                  <p>{general.phoneNumber}</p>
                 </div>
                 <div className='cv-general-entry cv-email'>
                   <h3 className="cv-general-title">Email: </h3>
-                  <p>{state.generalInfo.email}</p>
+                  <p>{general.email}</p>
                 </div>
                 <div className='cv-general-entry cv-website'>
                   <h3 className="cv-general-title">Website: </h3>
-                  <p><a href={state.generalInfo.website} target='_blank' rel='noreferrer'>{state.generalInfo.website}</a></p>
+                  <p><a href={general.website} target='_blank' rel='noreferrer'>{general.website}</a></p>
                 </div>
               </div>
             </div>
@@ -45,8 +45,7 @@ class Display extends Component {
             <div className="cv-profile">
               <h3 className="cv-body-title">Profile</h3>
               <p>
-                Do consequat ea qui sint velit ullamco officia incididunt tempor et velit. Nostrud ut irure occaecat duis pariatur ullamco aute elit aliqua enim amet qui reprehenderit. Consectetur mollit elit et excepteur esse incididunt ipsum.
-                Enim amet nostrud et consequat anim. Dolore nulla laborum qui esse. Consectetur exercitation excepteur cupidatat eiusmod labore cillum esse laboris ipsum enim ex. Eu incididunt aliquip deserunt anim est deserunt tempor. Incididunt minim do qui labore. Laborum in sint ex voluptate minim enim minim enim labore consectetur labore. Adipisicing velit adipisicing sint culpa eu esse minim nisi et minim laboris.
+                {general.profile}
               </p>
             </div>
             <div className="cv-education">

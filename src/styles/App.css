@@ -8,6 +8,10 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.cv-profile-textarea {
+    resize: vertical;
+}
+
 .name-inputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
