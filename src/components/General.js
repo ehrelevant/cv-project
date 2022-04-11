@@ -95,11 +95,10 @@ class General extends Component {
             />
           </div>
           <div className="label-input-pair">
-            <label htmlFor="photoUrl">Photo</label>
+            <label htmlFor="photo">Photo</label>
             <input
               type="file"
-              name="photoUrl"
-              value={generalInfo.photoUrl}
+              name="photo"
               onChange={onGeneralChange}
             />
           </div>

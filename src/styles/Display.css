@@ -80,6 +80,12 @@ p {
     background-size: contain;
 }
 
+.cv-image-content {
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+}
+
 .educational-entries, .practical-entries {
     display: grid;
     row-gap: 10px;

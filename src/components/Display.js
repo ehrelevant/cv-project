@@ -38,7 +38,9 @@ class Display extends Component {
                 </div>
               </div>
             </div>
-            <div className='cv-image'></div>
+            <div className='cv-image'>
+              <img className='cv-image-content' src={general.photo ? URL.createObjectURL(general.photo) : ""} alt="" />
+            </div>
           </header>
           <main className="cv-body">
 

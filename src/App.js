@@ -22,7 +22,7 @@ class App extends Component {
         address1: '',
         address2: '',
         address3: '',
-        photoUrl: '',
+        photo: '',
         profile: '',
       },
       educationalExp: [],
@@ -51,7 +51,7 @@ class App extends Component {
         address1: form['address1'].value,
         address2: form['address2'].value,
         address3: form['address3'].value,
-        photoUrl: '',
+        photo: form['photo'].files[0],
         profile: form['profile'].value,
       },
     });
