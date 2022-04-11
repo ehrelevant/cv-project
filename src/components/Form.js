@@ -28,7 +28,7 @@ class Form extends Component {
           <General onGeneralChange={onGeneralChange} generalInfo={state.generalInfo} />
 
           <hr />
-          <p>Educational Experience</p>
+          <p className="cv-section-label">Educational Experience</p>
 
           {state.educationalExp.map((entry, index) => {
             return (
@@ -42,7 +42,7 @@ class Form extends Component {
           <button onClick={addEducationEntry}>+ Add Entry</button>
 
           <hr />
-          <p>Practical Experience</p>
+          <p className="cv-section-label">Practical Experience</p>
 
           {state.practicalExp.map((entry, index) => {
             return (
