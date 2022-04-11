@@ -19,23 +19,39 @@ class Display extends Component {
               <h1 className='cv-header-name'>{general.firstName} {general.lastName}</h1>
               <h2 className='cv-header-title'>{general.title}</h2>
               <div className='cv-general-info'>
-                <div className='cv-general-entry cv-address'>
-                  <h3 className="cv-general-title">Address: </h3>
-                  <p>{general.address1}</p>
-                  <p>{general.address2}, {general.address3}</p>
-                </div>
-                <div className='cv-general-entry cv-phone'>
-                  <h3 className="cv-general-title">Phone: </h3>
-                  <p>{general.phoneNumber}</p>
-                </div>
-                <div className='cv-general-entry cv-email'>
-                  <h3 className="cv-general-title">Email: </h3>
-                  <p>{general.email}</p>
-                </div>
-                <div className='cv-general-entry cv-website'>
-                  <h3 className="cv-general-title">Website: </h3>
-                  <p><a href={general.website} target='_blank' rel='noreferrer'>{general.website}</a></p>
-                </div>
+                {
+                  (general.address1 || general.address2 || general.address3) ? (
+                    <div className='cv-general-entry cv-address'>
+                      <h3 className="cv-general-title">Address: </h3>
+                      <p>{general.address1}</p>
+                      <p>{general.address2 + ((general.address2 && general.address3) ? ", " : "") + general.address3}</p>
+                    </div>
+                  ) : ""
+                }
+                {
+                  (general.phoneNumber) ? (
+                    <div className='cv-general-entry cv-phone'>
+                      <h3 className="cv-general-title">Phone: </h3>
+                      <p>{general.phoneNumber}</p>
+                    </div>
+                  ) : ""
+                }
+                {
+                  (general.email) ? (
+                    <div className='cv-general-entry cv-email'>
+                      <h3 className="cv-general-title">Email: </h3>
+                      <p>{general.email}</p>
+                    </div>
+                  ) : ""
+                }
+                {
+                  (general.website) ? (
+                    <div className='cv-general-entry cv-website'>
+                      <h3 className="cv-general-title">Website: </h3>
+                      <p><a href={general.website} target='_blank' rel='noreferrer'>{general.website}</a></p>
+                    </div>
+                  ) : ""
+                }
               </div>
             </div>
             <div className='cv-image'>
