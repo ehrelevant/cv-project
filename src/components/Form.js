@@ -13,7 +13,7 @@ class Form extends Component {
   }
 
   render() {
-    const { 
+    const {
       state,
       onGeneralChange,
       onEducationChange,
