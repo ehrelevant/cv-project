@@ -20,8 +20,9 @@ p {
 .cv-paper {
     width: 8.5in;
     height: 11in;
-    border: 1px solid #000000;
     padding: 0.5in;
+    margin: 20px 0;
+    box-shadow: 0 0 8px 4px #888888;
 }
 
 
