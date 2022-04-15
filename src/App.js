@@ -3,44 +3,34 @@ import Display from './components/Display';
 
 import './styles/App.css';
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import uniqid from 'uniqid';
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const [state, setState] = useState({
+    generalInfo: {
+      firstName: '',
+      lastName: '',
+      title: '',
+      email: '',
+      phoneNumber: '',
+      website: '',
+      address1: '',
+      address2: '',
+      address3: '',
+      photo: '',
+      profile: '',
+    },
+    educationalExp: [],
+    practicalExp: [],
+  });
 
-    this.state = {
-      generalInfo: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        email: '',
-        phoneNumber: '',
-        website: '',
-        address1: '',
-        address2: '',
-        address3: '',
-        photo: '',
-        profile: '',
-      },
-      educationalExp: [],
-      practicalExp: [],
-    };
-
-    this.onGeneralChange = this.onGeneralChange.bind(this);
-    this.onEducationChange = this.onEducationChange.bind(this);
-    this.onPracticalChange = this.onPracticalChange.bind(this);
-    this.addEducationEntry = this.addEducationEntry.bind(this);
-    this.addPracticalEntry = this.addPracticalEntry.bind(this);
-  }
-
-  onGeneralChange(evt) {
+  const onGeneralChange = (evt) => {
     evt.preventDefault();
     const target = evt.target;
     const form = target.form;
-    this.setState({
+    setState({
       generalInfo: {
         firstName: form['firstName'].value,
         lastName: form['lastName'].value,
@@ -54,16 +44,21 @@ class App extends Component {
         photo: form['photo'].files[0],
         profile: form['profile'].value,
       },
+
+      educationalExp: state.educationalExp,
+      practicalExp: state.practicalExp,
     });
-    console.log(this.state)
   }
 
-  onEducationChange(evt, entryId) {
+  const onEducationChange = (evt, entryId) => {
     evt.preventDefault();
     const target = evt.target;
     const form = target.form;
-    this.setState({
-      educationalExp: this.state.educationalExp.map(entry => {
+    setState({
+      generalInfo: state.generalInfo,
+      practicalExp: state.practicalExp,
+
+      educationalExp: state.educationalExp.map(entry => {
         if(entry.id === entryId) {
           return {
             id: entryId,
@@ -81,12 +76,15 @@ class App extends Component {
     });
   }
 
-  onPracticalChange(evt, entryId) {
+  const onPracticalChange = (evt, entryId) => {
     evt.preventDefault();
     const target = evt.target;
     const form = target.form;
-    this.setState({
-      practicalExp: this.state.practicalExp.map(entry => {
+    setState({
+      generalInfo: state.generalInfo,
+      educationalExp: state.educationalExp,
+
+      practicalExp: state.practicalExp.map(entry => {
         if(entry.id === entryId) {
           return {
             id: entryId,
@@ -103,10 +101,13 @@ class App extends Component {
     });
   }
 
-  addEducationEntry(evt) {
+  const addEducationEntry = (evt) => {
     evt.preventDefault();
-    this.setState({
-      educationalExp: this.state.educationalExp.concat({
+    setState({
+      generalInfo: state.generalInfo,
+      practicalExp: state.practicalExp,
+
+      educationalExp: state.educationalExp.concat({
         id: uniqid(),
         university: '',
         address: '',
@@ -118,10 +119,13 @@ class App extends Component {
     });
   }
 
-  addPracticalEntry(evt) {
+  const addPracticalEntry = (evt) => {
     evt.preventDefault();
-    this.setState({
-      practicalExp: this.state.practicalExp.concat({
+    setState({
+      generalInfo: state.generalInfo,
+      educationalExp: state.educationalExp,
+
+      practicalExp: state.practicalExp.concat({
         id: uniqid(),
         company: '',
         address: '',
@@ -132,21 +136,19 @@ class App extends Component {
     });
   }
 
-  render() {
-    return (
-      <main>
-        <Form state={this.state}
-              onGeneralChange={this.onGeneralChange}
-              onEducationChange={this.onEducationChange}
-              onPracticalChange={this.onPracticalChange}
-              addEducationEntry={this.addEducationEntry}
-              addPracticalEntry={this.addPracticalEntry}
-              />
-        <hr />
-        <Display state={this.state}/>
-      </main>
-    );
-  }
+  return (
+    <main>
+      <Form state={state}
+            onGeneralChange={onGeneralChange}
+            onEducationChange={onEducationChange}
+            onPracticalChange={onPracticalChange}
+            addEducationEntry={addEducationEntry}
+            addPracticalEntry={addPracticalEntry}
+            />
+      <hr />
+      <Display state={state}/>
+    </main>
+  );
 }
 
 export default App;
